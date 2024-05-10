@@ -33,6 +33,8 @@ function register_types() {
             'public'      => true,
             'hierarchical'  => true,
             'has_archive'   => true,
+            'show_in_rest'  => true,
+            'supports'      => array('title', 'editor', 'author', 'comments', 'revisions'),
 		)
 	);
 }
