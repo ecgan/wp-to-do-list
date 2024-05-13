@@ -60,6 +60,18 @@ function wporg_options_main_html() {
     <?php
 }
 
+/**
+ * Display callback for the submenu page.
+ */
+function books_ref_page_callback() { 
+    ?>
+    <div class="wrap">
+        <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
+        <p><?php _e( 'Helpful stuff here', 'textdomain' ); ?></p>
+    </div>
+    <?php
+}
+
 function add_admin_menu_main_page() {
     add_menu_page(
         __( 'WP To-do List', 'wp-to-do-list' ),
@@ -69,6 +81,22 @@ function add_admin_menu_main_page() {
         'wporg_options_main_html',
         '',
         58
+    );
+
+    add_submenu_page( 
+        'wp-to-do-list_main', 
+        __( 'Main', 'wp-to-do-list' ), 
+        __( 'Main', 'wp-to-do-list' ),
+        'manage_options', 
+        'wp-to-do-list_main'
+    );
+    add_submenu_page( 
+        'wp-to-do-list_main', 
+        __( 'Settings', 'wp-to-do-list' ),
+        __( 'Settings', 'wp-to-do-list' ),
+        'manage_options', 
+        'wp-to-do-list_submenu',
+        'books_ref_page_callback'
     );
 }
 
