@@ -68,7 +68,7 @@ function add_admin_menu_main_page() {
         'wp-to-do-list_main',
         'wporg_options_main_html',
         '',
-        20
+        58
     );
 }
 
