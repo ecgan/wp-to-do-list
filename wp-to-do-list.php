@@ -63,7 +63,7 @@ function wporg_options_main_html() {
 function add_admin_menu_main_page() {
     add_menu_page(
         __( 'WP To-do List', 'wp-to-do-list' ),
-        __( 'WP To-do List 123', 'wp-to-do-list' ),
+        __( 'WP To-do List', 'wp-to-do-list' ),
         'manage_options',
         'wp-to-do-list_main',
         'wporg_options_main_html',
