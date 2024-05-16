@@ -1,8 +1,5 @@
 import { createRoot } from "@wordpress/element";
-
-const App = () => {
-  return <div>App </div>;
-};
+import { App } from "./App";
 
 window.addEventListener(
   "load",
