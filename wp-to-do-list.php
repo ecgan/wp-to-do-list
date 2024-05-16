@@ -41,7 +41,7 @@ function register_types() {
 
 add_action('init', 'register_types');
 
-function wporg_options_main_html() {
+function wptdl_main_html() {
     ?>
     <div class="wrap">
       <div id="wptdl_app"></div>
@@ -52,11 +52,11 @@ function wporg_options_main_html() {
 /**
  * Display callback for the submenu page.
  */
-function books_ref_page_callback() { 
+function wptdl_settings_html() { 
     ?>
     <div class="wrap">
         <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-        <p><?php _e( 'Helpful stuff here', 'textdomain' ); ?></p>
+        <p><?php _e( 'Helpful stuff here', 'wp-to-do-list' ); ?></p>
     </div>
     <?php
 }
@@ -66,26 +66,26 @@ function add_admin_menu_main_page() {
         __( 'WP To-do List', 'wp-to-do-list' ),
         __( 'WP To-do List', 'wp-to-do-list' ),
         'manage_options',
-        'wp-to-do-list_main',
-        'wporg_options_main_html',
+        'wptdl_main',
+        'wptdl_main_html',
         'dashicons-editor-ul',
         58
     );
 
     add_submenu_page( 
-        'wp-to-do-list_main', 
+        'wptdl_main', 
         __( 'Main', 'wp-to-do-list' ), 
         __( 'Main', 'wp-to-do-list' ),
         'manage_options', 
-        'wp-to-do-list_main'
+        'wptdl_main'
     );
     add_submenu_page( 
-        'wp-to-do-list_main', 
+        'wptdl_main', 
         __( 'Settings', 'wp-to-do-list' ),
         __( 'Settings', 'wp-to-do-list' ),
         'manage_options', 
-        'wp-to-do-list_submenu',
-        'books_ref_page_callback'
+        'wptdl_settings',
+        'wptdl_settings_html'
     );
 }
 
@@ -99,7 +99,7 @@ add_action( 'admin_menu', 'add_admin_menu_main_page' );
  */
 function load_custom_wp_admin_scripts( $hook ) {
 	// Load only on ?page=my-custom-gutenberg-app.
-	if ( 'toplevel_page_wp-to-do-list_main' !== $hook ) {
+	if ( 'toplevel_page_wptdl_main' !== $hook ) {
 		return;
 	}
 
@@ -115,13 +115,13 @@ function load_custom_wp_admin_scripts( $hook ) {
 
 	// Load our app.js.
 	wp_register_script(
-		'my-custom-gutenberg-app',
+		'wptdl-main-app',
 		plugins_url( 'build/index.js', __FILE__ ),
 		$asset_file['dependencies'],
 		$asset_file['version'],
 		true
 	);
-	wp_enqueue_script( 'my-custom-gutenberg-app' );
+	wp_enqueue_script( 'wptdl-main-app' );
 
 	// Load our style.css.
 	// wp_register_style(
