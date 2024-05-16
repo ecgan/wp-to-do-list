@@ -1,0 +1,23 @@
+{
+  "name": "wp-to-do-list",
+  "version": "0.0.1",
+  "description": "WP To-do List",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecgan/wp-to-do-list.git"
+  },
+  "keywords": [
+    "to-do",
+    "list"
+  ],
+  "author": "Gan Eng Chin",
+  "license": "GPL-3.0+",
+  "bugs": {
+    "url": "https://github.com/ecgan/wp-to-do-list/issues"
+  },
+  "homepage": "https://github.com/ecgan/wp-to-do-list#readme"
+}
