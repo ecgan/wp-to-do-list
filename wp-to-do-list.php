@@ -44,18 +44,7 @@ add_action('init', 'register_types');
 function wporg_options_main_html() {
     ?>
     <div class="wrap">
-      <h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-      <form action="options.php" method="post">
-        <?php
-        // output security fields for the registered setting "wporg_options"
-        settings_fields( 'wporg_options' );
-        // output setting sections and their fields
-        // (sections are registered for "wporg", each field is registered to a specific section)
-        do_settings_sections( 'wporg' );
-        // output save settings button
-        submit_button( __( 'Save Settings', 'textdomain' ) );
-        ?>
-      </form>
+      <div id="wptdl_app"></div>
     </div>
     <?php
 }
@@ -101,3 +90,47 @@ function add_admin_menu_main_page() {
 }
 
 add_action( 'admin_menu', 'add_admin_menu_main_page' );
+
+
+/**
+ * Load the admin script.
+ *
+ * @param string $hook The hook name of the page.
+ */
+function load_custom_wp_admin_scripts( $hook ) {
+	// Load only on ?page=my-custom-gutenberg-app.
+	if ( 'toplevel_page_wp-to-do-list_main' !== $hook ) {
+		return;
+	}
+
+	// Load the required WordPress packages.
+
+	// Automatically load imported dependencies and assets version.
+	$asset_file = include plugin_dir_path( __FILE__ ) . '/build/index.asset.php';
+
+	// Enqueue CSS dependencies.
+	foreach ( $asset_file['dependencies'] as $style ) {
+		wp_enqueue_style( $style );
+	}
+
+	// Load our app.js.
+	wp_register_script(
+		'my-custom-gutenberg-app',
+		plugins_url( 'build/index.js', __FILE__ ),
+		$asset_file['dependencies'],
+		$asset_file['version'],
+		true
+	);
+	wp_enqueue_script( 'my-custom-gutenberg-app' );
+
+	// Load our style.css.
+	// wp_register_style(
+	// 	'my-custom-gutenberg-app',
+	// 	plugins_url( 'build/style-index.css', __FILE__ ),
+	// 	array(),
+	// 	$asset_file['version']
+	// );
+	// wp_enqueue_style( 'my-custom-gutenberg-app' );
+}
+
+add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_scripts' );
