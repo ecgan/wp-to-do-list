@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ecgan/wp-to-do-list/issues"
   },
-  "homepage": "https://github.com/ecgan/wp-to-do-list#readme"
+  "homepage": "https://github.com/ecgan/wp-to-do-list#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "^27.9.0"
+  }
 }
