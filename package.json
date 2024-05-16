@@ -10,10 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/ecgan/wp-to-do-list.git"
   },
-  "keywords": [
-    "to-do",
-    "list"
-  ],
+  "keywords": [],
   "author": "Gan Eng Chin",
   "license": "GPL-3.0+",
   "bugs": {
