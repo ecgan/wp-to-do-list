@@ -1,5 +1,5 @@
 import "./App.scss";
 
 export const App = () => {
-  return <div class="app">App</div>;
+  return <div className="app">App</div>;
 };
