@@ -4,6 +4,8 @@
   "description": "WP To-do List",
   "main": "build/index.js",
   "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
