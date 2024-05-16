@@ -124,13 +124,13 @@ function load_custom_wp_admin_scripts( $hook ) {
 	wp_enqueue_script( 'wptdl-main-app' );
 
 	// Load our style.css.
-	// wp_register_style(
-	// 	'my-custom-gutenberg-app',
-	// 	plugins_url( 'build/style-index.css', __FILE__ ),
-	// 	array(),
-	// 	$asset_file['version']
-	// );
-	// wp_enqueue_style( 'my-custom-gutenberg-app' );
+	wp_register_style(
+		'wptdl-main-app',
+		plugins_url( 'build/index.css', __FILE__ ),
+		array(),
+		$asset_file['version']
+	);
+	wp_enqueue_style( 'wptdl-main-app' );
 }
 
 add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_scripts' );
